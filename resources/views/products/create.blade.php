@@ -25,17 +25,17 @@
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Name</label>
-            <input type="text" name="name" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('name') }}">
+            <input type="text" placeholder="Name..." name="name" class="w-full border-gray-500 bg-gray-50 rounded px-3 py-2 focus:border-blue-500 outline-none" value="{{ old('name') }}">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Model</label>
-            <input type="text" name="model" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('model') }}">
+            <input type="text" name="model" placeholder="Model" class="w-full border-gray-200 bg-gray-50 focus:border-blue-100 outline-none rounded px-3 py-2" value="{{ old('model') }}">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Price</label>
-            <input type="number" step="0.01" name="price" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('price') }}">
+            <input type="number" step="0.01" name="price" class="focus:border-blue-500 outline-none w-full border-gray-200 bg-gray-50 border-1 rounded px-3 py-2" placeholder="Enter Price" value="{{ old('price') }}">
         </div>
 
         <div class="flex justify-end">
