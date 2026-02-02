@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StroeProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -9,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::all();
         return view('products.index', compact('products'));
     }
 
@@ -18,15 +20,10 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(Request $request)
+    public function store(StroeProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'model' => 'required|string|max:255',
-            'price' => 'required|numeric',
-        ]);
 
-        Product::create($request->all());
+        Product::create($request->validated());
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
@@ -36,15 +33,10 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'model' => 'required|string|max:255',
-            'price' => 'required|numeric',
-        ]);
 
-        $product->update($request->all());
+        $product->update($request->validated());
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 

@@ -26,17 +26,17 @@
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Name</label>
-            <input type="text" name="name" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('name', $product->name) }}">
+            <input type="text" name="name" class="w-full border-gray-200 bg-gray-50 focus:border-blue-100 outline-none rounded px-3 py-2" value="{{ old('name', $product->name) }}">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Model</label>
-            <input type="text" name="model" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('model', $product->model) }}">
+            <input type="text" name="model" class="w-full border-gray-200 rounded px-3 py-2 bg-gray-50 focus:border-blue-100 outline-none" value="{{ old('model', $product->model) }}">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 mb-1">Price</label>
-            <input type="number" step="0.01" name="price" class="w-full border-gray-200 rounded px-3 py-2" value="{{ old('price', $product->price) }}">
+            <input type="number" step="0.01" name="price" class="w-full border-gray-200 rounded px-3 py-2 bg-gray-50 focus:border-blue-100 outline-none" value="{{ old('price', $product->price) }}">
         </div>
 
         <div class="flex justify-end">
