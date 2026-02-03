@@ -10,4 +10,8 @@ class Product extends Model
     use HasFactory;
     protected $fillable = ['name', 'model', 'price'];
 
+//    public function findOrFail($id)
+//    {
+//    }
+
 }

@@ -6,12 +6,21 @@ use App\Http\Requests\StroeProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
+    protected $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function index()
     {
-        $products = Product::all();
+        $products = $this->productService->getAllProducts();
         return view('products.index', compact('products'));
     }
 
@@ -23,26 +32,26 @@ class ProductController extends Controller
     public function store(StroeProductRequest $request)
     {
 
-        Product::create($request->validated());
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        $this->productService->createProduct($request->validated());
+        return redirect()->route('products.index')->with('success','Product Created Successfully.');
     }
 
     // Show form to edit product
-    public function edit(Product $product)
+    public function edit($id)
     {
-        return view('products.edit', compact('product'));
+        $product = $this->productService->getProductById($id);
+        return view('products.edit',compact('product'));
     }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, $id)
     {
-
-        $product->update($request->validated());
+        $this->productService->updateProduct($id,$request->validated());
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
+        $this->productService->deleteProduct($id);
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 }
