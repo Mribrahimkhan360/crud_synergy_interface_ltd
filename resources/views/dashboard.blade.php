@@ -13,7 +13,7 @@
     <div class="bg-dark text-white p-3" id="sidebar-wrapper" style="min-width: 200px;">
         <h4 class="text-center">Dashboard</h4>
         <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Home</a>
+            <a href="{{ url('/') }}" class="list-group-item list-group-item-action bg-dark text-white">Home</a>
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Users</a>
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Reports</a>
             <form action="{{route('logout')}}" method="post">

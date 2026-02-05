@@ -26,7 +26,7 @@ Route::resource('products', ProductController::class);
 Route::get('/register',[UserController::class,'showRegister']);
 Route::post('/register',[UserController::class,'register']);
 
-Route::get('/login',[UserController::class,'showLogin']);
+Route::get('/login',[UserController::class,'showLogin'])->name('login');
 Route::post('/login',[UserController::class,'login']);
 
 ROute::middleware('auth')->group(function (){
