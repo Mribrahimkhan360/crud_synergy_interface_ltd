@@ -28,6 +28,10 @@ class UserController extends Controller
 
     public function showLogin()
     {
+        if ($this->authService->isAuthenticated())
+        {
+            return redirect()->route('dashboard');
+        }
         return view('auth.login');
     }
 
@@ -37,14 +41,20 @@ class UserController extends Controller
         {
             return redirect('/dashboard');
         }
-
         return  back()->withErrors(['email'=>'Invalid credentials']);
     }
 
     public function dashboard()
     {
-        return view('dashboard');
+        if ($this->authService->isAuthenticated()){
+            return view('dashboard');
+        }
+        return view('auth.login');
     }
 
-
+    public function logout()
+    {
+        $this->authService->logout();
+        return redirect('/login');
+    }
 }

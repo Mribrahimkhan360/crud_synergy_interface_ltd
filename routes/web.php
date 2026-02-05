@@ -21,11 +21,16 @@ use App\Http\Controllers\UserController;
 //});
 
 Route::resource('products', ProductController::class);
-Route::get('/', [ProductController::class, 'index']);
+
 
 Route::get('/register',[UserController::class,'showRegister']);
 Route::post('/register',[UserController::class,'register']);
 
 Route::get('/login',[UserController::class,'showLogin']);
 Route::post('/login',[UserController::class,'login']);
-Route::get('/dashboard',[UserController::class,'dashboard']);
+
+ROute::middleware('auth')->group(function (){
+    Route::get('/dashboard',[UserController::class,'dashboard']);
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/logout',[UserController::class,'logout'])->name('logout');
+});

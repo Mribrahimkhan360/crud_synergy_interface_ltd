@@ -30,4 +30,18 @@ class UserService
         }
         return false;
     }
+
+    public function isAuthenticated()
+    {
+        return Auth::check();
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return true;
+    }
 }

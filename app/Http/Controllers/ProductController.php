@@ -8,20 +8,27 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Services\ProductService;
+use App\Services\UserService;
 
 class ProductController extends Controller
 {
-    protected $productService;
+    protected $productService,$authService;
 
-    public function __construct(ProductService $productService)
+
+    public function __construct(ProductService $productService,UserService $authService)
     {
         $this->productService = $productService;
+        $this->authService = $authService;
     }
 
     public function index()
     {
-        $products = $this->productService->getAllProducts();
-        return view('products.index', compact('products'));
+        if ($this->authService->isAuthenticated())
+        {
+            $products = $this->productService->getAllProducts();
+            return view('products.index', compact('products'));
+        }
+        return view('auth.login');
     }
 
     public function create()

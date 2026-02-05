@@ -16,7 +16,10 @@
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Home</a>
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Users</a>
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Reports</a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Settings</a>
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+                <button type="submit">logout</button>
+            </form>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
