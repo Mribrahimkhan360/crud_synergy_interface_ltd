@@ -7,9 +7,7 @@
 </head>
 <body class="bg-gray-50">
 <div class="max-w-3xl mx-auto px-6 py-10">
-
     <h1 class="text-2xl font-semibold mb-6">Add Product</h1>
-
     @if($errors->any())
         <div class="mb-4 p-3 bg-red-100 text-red-700 rounded">
             <ul class="list-disc list-inside">
@@ -43,7 +41,6 @@
             <button type="submit" class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Save</button>
         </div>
     </form>
-
 </div>
 </body>
 </html>

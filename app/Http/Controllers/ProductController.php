@@ -31,7 +31,6 @@ class ProductController extends Controller
 
     public function store(StroeProductRequest $request)
     {
-
         $this->productService->createProduct($request->validated());
         return redirect()->route('products.index')->with('success','Product Created Successfully.');
     }

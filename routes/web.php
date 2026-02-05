@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -21,3 +22,10 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 Route::get('/', [ProductController::class, 'index']);
+
+Route::get('/register',[UserController::class,'showRegister']);
+Route::post('/register',[UserController::class,'register']);
+
+Route::get('/login',[UserController::class,'showLogin']);
+Route::post('/login',[UserController::class,'login']);
+Route::get('/dashboard',[UserController::class,'dashboard']);
