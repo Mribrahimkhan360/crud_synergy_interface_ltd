@@ -15,7 +15,7 @@
         <div class="list-group list-group-flush">
             <a href="{{ url('/') }}" class="list-group-item list-group-item-action bg-dark text-white">Home</a>
             <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Users</a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">Reports</a>
+            <a href="{{ route('products.create') }}" class="list-group-item list-group-item-action bg-dark text-white">Add Product</a>
             <form action="{{route('logout')}}" method="post">
                 @csrf
                 <button type="submit">logout</button>
